@@ -1,0 +1,4 @@
+Why dashboard is directly  page.tsx  "use client" 
+
+at this time stame we could have used Promise.all for deleteWebhook  and  delete from DB
+https://youtu.be/my29RqLL-vg?t=16559

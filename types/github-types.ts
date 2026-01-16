@@ -1,3 +1,4 @@
+import { components } from "@octokit/openapi-types";
 export interface contributiondata {
   user: {
     contributionCollection: {
@@ -12,3 +13,9 @@ export interface contributiondata {
     };
   };
 }
+
+type GitHubRepo = components["schemas"]["repository"];
+
+export type Repository = GitHubRepo & {
+  isConnected: boolean;
+};

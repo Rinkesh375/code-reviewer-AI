@@ -1,0 +1,131 @@
+/*
+GitHub OAuth Scopes – Notes
+
+Scope meanings and what permissions they grant:
+
+- read:user
+  Allows the app to read the user's basic GitHub profile information
+  (username, avatar, profile details).
+
+- user:email
+  Allows the app to access the user's email address
+  (useful when email is not public).
+
+- repo
+  ⚠️ Powerful permission.
+  Allows full access to the user's repositories
+  (both public and private), including reading, writing,
+  creating repos, issues, PRs, and commits.
+
+- public_repo
+  Allows access only to public repositories.
+  Safer alternative to "repo" if private repo access is not needed.
+
+- workflow
+  Allows the app to manage and interact with GitHub Actions workflows
+  (trigger runs, read workflow status, etc.).
+
+- admin:repo_hook
+  Allows management of repository webhooks
+  (create, update, delete webhooks for repo events).
+*/
+
+
+
+
+
+
+
+
+
+/*
+===============================================
+Next.js Execution Model (App Router)
+===============================================
+
+There are THREE cases to understand:
+
+------------------------------------------------
+1) "use client"
+------------------------------------------------
+- Code runs in the USER'S BROWSER
+- Used for UI + interactions
+
+CAN do:
+- useState, useEffect
+- onClick handlers
+- DOM access
+- animations, loaders
+
+CANNOT do:
+- access database (Prisma)
+- read request headers/cookies
+- use secrets or tokens
+- use next/headers
+
+------------------------------------------------
+2) NO directive (neither "use client" nor "use server")
+------------------------------------------------
+- DEFAULT behavior in Next.js App Router
+- This is a SERVER COMPONENT
+
+Meaning:
+- Code runs on the SERVER
+- Used mainly for rendering UI with data
+
+CAN do:
+- fetch data
+- access DB, headers, cookies
+- use secrets
+- render JSX
+
+CANNOT do:
+- be called from client JS
+- handle clicks or browser events
+- be used as a server action
+
+------------------------------------------------
+3) "use server"
+------------------------------------------------
+- This marks SERVER ACTIONS
+- Functions that are CALLED from the browser
+- But EXECUTED on the server
+
+CAN do:
+- access DB, auth, headers
+- use Prisma, secrets
+- be triggered by client components
+- handle form submissions & mutations
+
+CANNOT do:
+- render UI
+- use React hooks
+- run in the browser
+
+------------------------------------------------
+SUMMARY TABLE
+------------------------------------------------
+
+Aspect                    | No directive | "use server"
+------------------------- | ------------ | -----------
+Runs on server            | Yes          | Yes
+Renders UI                | Yes          | No
+Can be imported in client | No           | Yes
+Callable from browser     | No           | Yes
+Used for actions          | No           | Yes
+
+------------------------------------------------
+KEY RULE (VERY IMPORTANT)
+------------------------------------------------
+- Server is the DEFAULT in Next.js
+- Client is OPT-IN ("use client")
+- If a server function is CALLED from client code,
+  it MUST be marked with "use server"
+
+------------------------------------------------
+MENTAL MODEL
+------------------------------------------------
+Client calls → Server runs → Client receives result
+
+===============================================
+*/

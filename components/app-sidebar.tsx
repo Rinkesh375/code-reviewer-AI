@@ -46,7 +46,6 @@ export default function AppSidebar() {
   const userEmail = user.email || "";
   const userAvatar = user.image || "";
 
-  console.log(user.name)
 
   const userInitials = userName
     .split(" ")
