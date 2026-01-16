@@ -1,11 +1,13 @@
 import { inngest } from "@/inngest/client";
 import { indexRepo } from "@/inngest/functions";
+import { generateReview } from "@/inngest/functions/review";
 import { serve } from "inngest/next";
 
 
 export const { GET, POST, PUT } = serve({
   client: inngest,
   functions: [
-    indexRepo
+    indexRepo,
+    generateReview
   ],
 });

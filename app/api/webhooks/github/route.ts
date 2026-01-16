@@ -16,7 +16,11 @@ export async function POST(request: NextRequest) {
       const [owner, repoName] = repo.split("/");
 
       if (action === "opened" || action === "synchronize") {
-        await reviewPullRequest(owner, repoName, prNumber);
+        reviewPullRequest(owner, repoName, prNumber)
+          .then(() => console.log(`Review completed for ${repo} #${prNumber}`))
+          .catch((error) =>
+            console.log(`Review failed for ${repo} #${prNumber}:`, error)
+          );
       }
     }
     return NextResponse.json({ message: "Event Processes" }, { status: 200 });
