@@ -25,7 +25,7 @@ export const auth = betterAuth({
       scope: ["repo"],
     },
   },
-
+  trustedOrigins: [process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"],
   plugins: [
     polar({
       client: polarClient,
@@ -35,10 +35,10 @@ export const auth = betterAuth({
           products: [
             {
               productId: "65d80324-a0c7-4f23-b792-36052d5f002e",
-              slug: "Code-Reviewer.AI", // Custom slug for easy reference in Checkout URL, e.g. /checkout/Code-Reviewer.AI
+              slug: "Pro", // Custom slug for easy reference in Checkout URL, e.g. /checkout/Code-Reviewer.AI
             },
           ],
-          successUrl: process.env.POLAR_SUCCESS_URL,
+          successUrl: process.env.POLAR_SUCCESS_URL ||  "/dashboard/subscription?success=true",
           authenticatedUsersOnly: true,
         }),
         portal({

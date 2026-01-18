@@ -31,7 +31,7 @@ export interface UserLimits {
   tier: SubscriptionTier;
   repositories: {
     current: number;
-    limit: number | null; 
+    limit: number | null;
     canAdd: boolean;
   };
   reviews: {
@@ -41,4 +41,17 @@ export interface UserLimits {
       canAdd: boolean;
     };
   };
+}
+
+export interface SubscriptionData {
+  user: {
+    id: string;
+    email: string;
+    name: string;
+    subscriptionTier: string;
+    subscriptionStatus: string | null;
+    polarCustomerId: string | null;
+    polarSubscriptionId: string | null;
+  } | null;
+  limits: UserLimits | null;
 }
