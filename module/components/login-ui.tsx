@@ -33,7 +33,7 @@ export default function LoginUI() {
           <div className="mb-16">
             <div className="inline-flex items-center gap-2 text-2xl font-bold">
               <div className="w-8 h-8 bg-primary rounded-full" />
-              <span>Code Reviewer AI</span>
+              <span>Code Reviewer.AI</span>
             </div>
           </div>
 
@@ -76,7 +76,7 @@ export default function LoginUI() {
           {/* Footer Links */}
           <div className="space-y-4 text-center text-sm text-gray-400">
             <div>
-              New to Code Reviewer AI?{" "}
+              New to Code Reviewer.AI?{" "}
               <a
                 href="#"
                 className="text-primary hover:text-primary-foreground font-semibold"
