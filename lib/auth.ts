@@ -25,7 +25,7 @@ export const auth = betterAuth({
       scope: ["repo"],
     },
   },
-  trustedOrigins: [process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"],
+  trustedOrigins: [process.env.NEXT_PUBLIC_APP_URL!],
   plugins: [
     polar({
       client: polarClient,
@@ -38,13 +38,13 @@ export const auth = betterAuth({
               slug: "Pro", // Custom slug for easy reference in Checkout URL, e.g. /checkout/Code-Reviewer.AI
             },
           ],
-          successUrl: process.env.POLAR_SUCCESS_URL ||  "/dashboard/subscription?success=true",
+          successUrl:
+            process.env.POLAR_SUCCESS_URL ||
+            "/dashboard/subscription?success=true",
           authenticatedUsersOnly: true,
         }),
         portal({
-          returnUrl:
-            process.env.NEXT_PUBLIC_APP_URL ||
-            "http://localhost:3000/dashboard",
+          returnUrl: process.env.NEXT_PUBLIC_APP_URL,
         }),
         usage(),
         webhooks({
